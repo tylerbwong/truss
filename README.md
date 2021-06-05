@@ -31,12 +31,10 @@ public class TestBridgeView @JvmOverloads constructor(
 
   @Composable
   public override fun Content(): Unit {
-    if (listOf(textValues).all { it != null }) {
-      Test(
-        isVisible = isVisible,
-        footer = footer
-      )
-    }
+    Test(
+      isVisible = isVisible,
+      footer = footer
+    )
   }
 }
 ```
