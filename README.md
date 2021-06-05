@@ -1,7 +1,7 @@
 # truss
 [![CI](https://github.com/tylerbwong/truss/workflows/CI/badge.svg)](https://github.com/tylerbwong/truss/actions?query=workflow%3ACI)
 
-Truss is a KSP processor to automatically generate Android Views from your Composable functions.
+Truss is a KSP processor that automatically generates Android Views for your `@Composable` functions.
 
 ### Example Usage
 ```kotlin
