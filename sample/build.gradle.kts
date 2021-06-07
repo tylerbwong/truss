@@ -28,6 +28,7 @@ android {
 dependencies {
     implementation(kotlin("stdlib"))
     implementation(projects.trussProcessor)
+    implementation(projects.trussRuntime)
     ksp(projects.trussProcessor)
     implementation(libs.androidx.appcompat)
     implementation(libs.androidx.compose.foundation)
@@ -35,4 +36,8 @@ dependencies {
     implementation(libs.androidx.compose.runtime)
     implementation(libs.androidx.compose.ui)
     implementation(libs.google.material)
+
+    testImplementation(libs.junit)
+    testImplementation(libs.kotlinCompileTesting.ksp)
+    testImplementation(libs.google.truth)
 }

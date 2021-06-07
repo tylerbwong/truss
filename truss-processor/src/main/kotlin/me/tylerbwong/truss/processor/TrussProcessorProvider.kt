@@ -9,6 +9,10 @@ import com.google.devtools.ksp.symbol.KSAnnotated
 import com.google.devtools.ksp.symbol.KSFunctionDeclaration
 import me.tylerbwong.truss.runtime.BridgeView
 import me.tylerbwong.truss.utils.annotationNames
+import me.tylerbwong.truss.utils.checkAndReportClasspath
+import me.tylerbwong.truss.utils.composeDependencies
+import me.tylerbwong.truss.utils.isOnClasspath
+import me.tylerbwong.truss.utils.platformDependencies
 import me.tylerbwong.truss.visitor.BridgeViewVisitor
 
 @AutoService(SymbolProcessorProvider::class)
@@ -24,7 +28,7 @@ private class TrussProcessor(environment: SymbolProcessorEnvironment) : SymbolPr
     private val deferredSymbols = mutableListOf<KSAnnotated>()
 
     override fun process(resolver: Resolver): List<KSAnnotated> {
-        resolver
+        val symbolsToProcess = resolver
             .getSymbolsWithAnnotation(BridgeView::class.java.name)
             .filterIsInstance<KSFunctionDeclaration>()
             .filter { function ->
@@ -39,12 +43,18 @@ private class TrussProcessor(environment: SymbolProcessorEnvironment) : SymbolPr
                     true
                 }
             }
-            .forEach { symbol ->
-                symbol.accept(
-                    visitor = BridgeViewVisitor(codeGenerator = codeGenerator, logger = logger),
-                    data = Unit,
-                )
-            }
+
+        if (checkAndReportClasspath(resolver, logger)) {
+            return symbolsToProcess.toList()
+        }
+
+        symbolsToProcess.forEach { symbol ->
+            symbol.accept(
+                visitor = BridgeViewVisitor(codeGenerator = codeGenerator, logger = logger),
+                data = Unit,
+            )
+        }
+
         return deferredSymbols
     }
 

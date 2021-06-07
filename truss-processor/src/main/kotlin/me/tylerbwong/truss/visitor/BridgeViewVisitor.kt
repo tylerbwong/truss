@@ -12,6 +12,11 @@ import com.squareup.kotlinpoet.KModifier
 import com.squareup.kotlinpoet.ParameterSpec
 import com.squareup.kotlinpoet.PropertySpec
 import com.squareup.kotlinpoet.TypeSpec
+import me.tylerbwong.truss.utils.abstractComposeViewClassName
+import me.tylerbwong.truss.utils.attributeSetClassName
+import me.tylerbwong.truss.utils.checkAndReportDefaultParameters
+import me.tylerbwong.truss.utils.composableClassName
+import me.tylerbwong.truss.utils.contextClassName
 import me.tylerbwong.truss.utils.defaultValue
 import me.tylerbwong.truss.utils.isPrimitive
 import java.io.OutputStreamWriter
@@ -23,38 +28,8 @@ class BridgeViewVisitor(
 
     private var parameterCount = 0
 
-    private val contextClassName = ClassName(
-        "android.content",
-        "Context"
-    )
-
-    private val attributeSetClassName = ClassName(
-        "android.util",
-        "AttributeSet"
-    ).copy(nullable = true)
-
-    private val composableClassName = ClassName(
-        "androidx.compose.runtime",
-        "Composable",
-    )
-
-    private val abstractComposeViewClassName = ClassName(
-        "androidx.compose.ui.platform",
-        "AbstractComposeView",
-    )
-
     override fun visitFunctionDeclaration(function: KSFunctionDeclaration, data: Unit) {
-        function.parameters.forEach { param ->
-            if (param.hasDefault) {
-                logger.error(
-                    message = "Default values are currently not supported",
-                    symbol = param,
-                )
-
-            }
-        }
-
-        if (function.parameters.any { it.hasDefault }) return
+        if (function.checkAndReportDefaultParameters(logger)) return
 
         val functionName = function.simpleName.asString()
         val packageName = function.packageName.asString()
@@ -95,7 +70,7 @@ class BridgeViewVisitor(
                     .addAnnotation(JvmOverloads::class)
                     .addParameter("context", contextClassName)
                     .addParameter(
-                        ParameterSpec.builder("attrs", attributeSetClassName)
+                        ParameterSpec.builder("attrs", attributeSetClassName.copy(nullable = true))
                             .defaultValue("null")
                             .build()
                     )

@@ -4,10 +4,10 @@ plugins {
 }
 
 dependencies {
-    api(projects.trussRuntime)
+    implementation(projects.trussRuntime)
     implementation(kotlin("stdlib"))
     implementation(libs.square.kotlinPoet)
     implementation(libs.google.autoService.annotations)
     ksp(libs.autoService.ksp)
-    implementation(libs.google.ksp.symbolProcessingApi)
+    compileOnly(libs.google.ksp.symbolProcessingApi)
 }
