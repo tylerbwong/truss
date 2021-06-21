@@ -1,5 +1,5 @@
 # truss
-[![Build](https://github.com/tylerbwong/truss/workflows/Build/badge.svg)](https://github.com/tylerbwong/truss/actions/workflows/build.yml)
+[![Build](https://github.com/tylerbwong/truss/actions/workflows/build.yml/badge.svg)](https://github.com/tylerbwong/truss/actions/workflows/build.yml)
 
 Truss is a [KSP](https://github.com/google/ksp) processor that automatically generates Android Views for your `@Composable` functions and vice versa.
 
