@@ -24,6 +24,16 @@ internal val abstractComposeViewClassName = ClassName(
     "AbstractComposeView",
 )
 
+internal val modifierClassName = ClassName(
+    "androidx.compose.ui",
+    "Modifier",
+)
+
+internal val androidViewClassName = ClassName(
+    "androidx.compose.ui.viewinterop",
+    "AndroidView",
+)
+
 internal val platformDependencies = listOf(
     contextClassName,
     attributeSetClassName,

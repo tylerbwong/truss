@@ -1,5 +1,9 @@
 package me.tylerbwong.truss.sample
 
+import android.content.Context
+import android.util.AttributeSet
+import androidx.annotation.DrawableRes
+import androidx.appcompat.widget.AppCompatTextView
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxSize
@@ -9,6 +13,7 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.text.style.TextAlign
+import me.tylerbwong.truss.runtime.BridgeComposable
 import me.tylerbwong.truss.runtime.BridgeView
 
 data class TextValues(val primaryText: String, val secondaryText: String)
@@ -37,5 +42,20 @@ fun Test(
             )
             Text(text = footer)
         }
+    }
+}
+
+@BridgeComposable
+class TestView @JvmOverloads constructor(
+    context: Context,
+    attrs: AttributeSet? = null,
+    defStyle: Int = 0
+) : AppCompatTextView(context, attrs, defStyle) {
+    fun setDrawable(@DrawableRes resId: Int) {
+        // No-op
+    }
+
+    fun setText(text: String) {
+        // No-op
     }
 }

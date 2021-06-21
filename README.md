@@ -1,9 +1,9 @@
 # truss
-[![CI](https://github.com/tylerbwong/truss/workflows/CI/badge.svg)](https://github.com/tylerbwong/truss/actions?query=workflow%3ACI)
+[![Build](https://github.com/tylerbwong/truss/workflows/CI/badge.svg)](https://github.com/tylerbwong/truss/actions/workflows/build.yml)
 
-Truss is a [KSP](https://github.com/google/ksp) processor that automatically generates Android Views for your `@Composable` functions.
+Truss is a [KSP](https://github.com/google/ksp) processor that automatically generates Android Views for your `@Composable` functions and vice versa.
 
-### Example Usage
+### `@BridgeView`
 ```kotlin
 @BridgeView
 @Composable
@@ -36,5 +36,46 @@ public class TestBridgeView @JvmOverloads constructor(
       footer = footer
     )
   }
+}
+```
+
+### `@BridgeComposable`
+```kotlin
+@BridgeComposable
+class TestView @JvmOverloads constructor(
+    context: Context,
+    attrs: AttributeSet? = null,
+    defStyle: Int = 0
+) : AppCompatTextView(context, attrs, defStyle) {
+    fun setDrawable(@DrawableRes resId: Int) {
+        // No-op
+    }
+
+    fun setText(text: String) {
+        // No-op
+    }
+}
+```
+
+Similarly, applying the `@BridgeComposable` to any Android View will generate the following code
+
+```kotlin
+@Composable
+public fun Test(
+  @DrawableRes resId: Int,
+  text: String,
+  modifier: Modifier = Modifier,
+  viewConfig: TestView.() -> Unit
+): Unit {
+  AndroidView(
+    factory = { context ->
+      TestView(context).apply {
+        setDrawable(resId)
+        setText(text)
+        viewConfig()
+      }
+    },
+    modifier = modifier,
+  )
 }
 ```

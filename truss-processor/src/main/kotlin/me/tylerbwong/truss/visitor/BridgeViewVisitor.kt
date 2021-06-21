@@ -19,7 +19,7 @@ import me.tylerbwong.truss.utils.composableClassName
 import me.tylerbwong.truss.utils.contextClassName
 import me.tylerbwong.truss.utils.defaultValue
 import me.tylerbwong.truss.utils.isPrimitive
-import java.io.OutputStreamWriter
+import me.tylerbwong.truss.utils.writeTo
 
 class BridgeViewVisitor(
     private val codeGenerator: CodeGenerator,
@@ -124,6 +124,6 @@ class BridgeViewVisitor(
 
         fileSpecBuilder.addType(typeSpecBuilder.build())
 
-        OutputStreamWriter(file, Charsets.UTF_8).use { fileSpecBuilder.build().writeTo(it) }
+        fileSpecBuilder.writeTo(file)
     }
 }

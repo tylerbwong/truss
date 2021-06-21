@@ -4,14 +4,14 @@ import com.google.common.truth.Truth.assertThat
 import com.tschuchort.compiletesting.KotlinCompilation
 import com.tschuchort.compiletesting.SourceFile
 import com.tschuchort.compiletesting.SourceFile.Companion.kotlin
-import com.tschuchort.compiletesting.kspSourcesDir
+import com.tschuchort.compiletesting.kspIncremental
 import com.tschuchort.compiletesting.symbolProcessorProviders
 import org.junit.Test
 import org.junit.runner.RunWith
-import org.junit.runners.BlockJUnit4ClassRunner
+import org.junit.runners.Parameterized
 
-@RunWith(BlockJUnit4ClassRunner::class)
-class TrussProcessorTest {
+@RunWith(Parameterized::class)
+class BridgeViewTest(private val incremental: Boolean) {
     @Test
     fun `test processor returns OK on valid use`() {
         val result = compile(
@@ -158,6 +158,18 @@ class TrussProcessorTest {
             this.inheritClassPath = inheritClassPath
             symbolProcessorProviders = listOf(TrussProcessorProvider())
             sources = sourceFiles.toList()
+            kspIncremental = incremental
         }.compile()
+    }
+
+    companion object {
+        @JvmStatic
+        @Parameterized.Parameters(name = "incremental={0}")
+        fun data(): Collection<Array<Any>> {
+            return listOf(
+                arrayOf(true),
+                arrayOf(false)
+            )
+        }
     }
 }
