@@ -1,6 +1,7 @@
 package me.tylerbwong.truss.sample
 
 import android.content.Context
+import android.graphics.drawable.Drawable
 import android.util.AttributeSet
 import androidx.annotation.DrawableRes
 import androidx.appcompat.widget.AppCompatTextView
@@ -15,6 +16,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.text.style.TextAlign
 import me.tylerbwong.truss.runtime.BridgeComposable
 import me.tylerbwong.truss.runtime.BridgeView
+import org.w3c.dom.Text
 
 data class TextValues(val primaryText: String, val secondaryText: String)
 
