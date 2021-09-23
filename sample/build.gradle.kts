@@ -7,7 +7,7 @@ plugins {
 android {
     defaultConfig {
         applicationId = "me.tylerbwong.truss.sample"
-        compileSdk = 30
+        compileSdk = 31
         minSdk = 23
     }
 
@@ -20,13 +20,17 @@ android {
         kotlinCompilerExtensionVersion = libs.versions.compose.get()
     }
 
+    compileOptions {
+        sourceCompatibility = JavaVersion.VERSION_11
+        targetCompatibility = JavaVersion.VERSION_11
+    }
+
     kotlinOptions {
-        jvmTarget = JavaVersion.VERSION_1_8.toString()
+        jvmTarget = JavaVersion.VERSION_11.toString()
     }
 }
 
 dependencies {
-    implementation(kotlin("stdlib"))
     implementation(projects.trussProcessor)
     implementation(projects.trussRuntime)
     ksp(projects.trussProcessor)

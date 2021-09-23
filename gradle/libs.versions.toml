@@ -1,17 +1,19 @@
 [versions]
+androidGradle = "7.1.0-alpha12"
 appcompat = "1.3.1"
 autoService = "1.0"
-autoServiceKsp = "0.5.3"
-compose = "1.0.1"
+autoServiceKsp = "1.0.0"
+compose = "1.1.0-alpha04"
 junit = "4.13.2"
-kotlin = "1.5.21"
-kotlinCompileTesting = "1.4.2"
-kotlinPoet = "1.8.0"
-ksp = "1.5.21-1.0.0-beta06"
+kotlin = "1.5.30"
+kotlinCompileTesting = "1.4.4"
+kotlinPoet = "1.10.1"
+ksp = "1.5.30-1.0.0"
 material = "1.4.0"
-truth = "1.1.2"
+truth = "1.1.3"
 
 [libraries]
+android-gradle = { module = "com.android.tools.build:gradle", version.ref = "androidGradle"}
 androidx-appcompat = { module = "androidx.appcompat:appcompat", version.ref = "appcompat" }
 androidx-compose-foundation = { module = "androidx.compose.foundation:foundation", version.ref = "compose" }
 androidx-compose-material = { module = "androidx.compose.material:material", version.ref = "compose" }
@@ -23,5 +25,7 @@ google-ksp-symbolProcessingApi = { module = "com.google.devtools.ksp:symbol-proc
 google-material = { module = "com.google.android.material:material", version.ref = "material" }
 google-truth = { module = "com.google.truth:truth", version.ref = "truth" }
 junit = { module = "junit:junit", version.ref = "junit" }
+kotlin-gradle = { module = "org.jetbrains.kotlin:kotlin-gradle-plugin", version.ref = "kotlin" }
 kotlinCompileTesting-ksp = { module = "com.github.tschuchortdev:kotlin-compile-testing-ksp", version.ref = "kotlinCompileTesting" }
+ksp-gradle = { module = "com.google.devtools.ksp:symbol-processing-gradle-plugin", version.ref = "ksp" }
 square-kotlinPoet = { module = "com.squareup:kotlinpoet", version.ref = "kotlinPoet" }
