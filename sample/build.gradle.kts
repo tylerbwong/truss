@@ -19,10 +19,18 @@ android {
     composeOptions {
         kotlinCompilerExtensionVersion = libs.versions.compose.get()
     }
+
+    compileOptions {
+        sourceCompatibility = JavaVersion.VERSION_11
+        targetCompatibility = JavaVersion.VERSION_11
+    }
+
+    kotlinOptions {
+        jvmTarget = JavaVersion.VERSION_11.toString()
+    }
 }
 
 dependencies {
-    implementation(kotlin("stdlib"))
     implementation(projects.trussProcessor)
     implementation(projects.trussRuntime)
     ksp(projects.trussProcessor)

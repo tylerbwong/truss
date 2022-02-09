@@ -26,5 +26,7 @@ google-ksp-symbolProcessingApi = { module = "com.google.devtools.ksp:symbol-proc
 google-material = { module = "com.google.android.material:material", version.ref = "material" }
 google-truth = { module = "com.google.truth:truth", version.ref = "truth" }
 junit = { module = "junit:junit", version.ref = "junit" }
+kotlin-gradle = { module = "org.jetbrains.kotlin:kotlin-gradle-plugin", version.ref = "kotlin" }
 kotlinCompileTesting-ksp = { module = "com.github.tschuchortdev:kotlin-compile-testing-ksp", version.ref = "kotlinCompileTesting" }
+ksp-gradle = { module = "com.google.devtools.ksp:symbol-processing-gradle-plugin", version.ref = "ksp" }
 square-kotlinPoet = { module = "com.squareup:kotlinpoet", version.ref = "kotlinPoet" }
