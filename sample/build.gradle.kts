@@ -7,7 +7,7 @@ plugins {
 android {
     defaultConfig {
         applicationId = "me.tylerbwong.truss.sample"
-        compileSdk = 30
+        compileSdk = 31
         minSdk = 23
     }
 
@@ -18,10 +18,6 @@ android {
 
     composeOptions {
         kotlinCompilerExtensionVersion = libs.versions.compose.get()
-    }
-
-    kotlinOptions {
-        jvmTarget = JavaVersion.VERSION_1_8.toString()
     }
 }
 
