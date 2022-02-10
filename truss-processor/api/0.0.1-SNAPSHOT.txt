@@ -1,0 +1,23 @@
+// Signature format: 4.0
+package me.tylerbwong.truss.utils {
+
+  public final class ClassNameKt {
+  }
+
+  public final class FileSpecBuilderKt {
+  }
+
+  public final class KSClassDeclarationKt {
+  }
+
+  public final class KSFunctionDeclarationKt {
+  }
+
+  public final class KSTypeKt {
+  }
+
+  public final class PropertySpecKt {
+  }
+
+}
+

@@ -22,10 +22,9 @@ import me.tylerbwong.truss.utils.composableClassName
 import me.tylerbwong.truss.utils.modifierClassName
 import me.tylerbwong.truss.utils.writeTo
 
-class BridgeComposableVisitor(
+internal class BridgeComposableVisitor(
     private val resolver: Resolver,
     private val codeGenerator: CodeGenerator,
-    private val logger: KSPLogger,
 ) : KSVisitorVoid() {
 
     override fun visitClassDeclaration(classDeclaration: KSClassDeclaration, data: Unit) {

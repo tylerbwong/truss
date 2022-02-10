@@ -18,7 +18,7 @@ import me.tylerbwong.truss.visitor.BridgeComposableVisitor
 import me.tylerbwong.truss.visitor.BridgeViewVisitor
 
 @AutoService(SymbolProcessorProvider::class)
-class TrussProcessorProvider : SymbolProcessorProvider {
+internal class TrussProcessorProvider : SymbolProcessorProvider {
     override fun create(environment: SymbolProcessorEnvironment): SymbolProcessor =
         TrussProcessor(environment)
 }
@@ -60,7 +60,7 @@ private class TrussProcessor(environment: SymbolProcessorEnvironment) : SymbolPr
                     true
                 }
             },
-            visitorProvider = { BridgeComposableVisitor(resolver, codeGenerator, logger) },
+            visitorProvider = { BridgeComposableVisitor(resolver, codeGenerator) },
         )
         return deferredSymbols
     }

@@ -5,7 +5,7 @@ import java.io.OutputStream
 import java.io.OutputStreamWriter
 import java.nio.charset.Charset
 
-fun FileSpec.Builder.writeTo(
+internal fun FileSpec.Builder.writeTo(
     file: OutputStream,
     charset: Charset = Charset.defaultCharset(),
 ) = OutputStreamWriter(file, charset).use { build().writeTo(it) }

@@ -21,7 +21,7 @@ import me.tylerbwong.truss.utils.defaultValue
 import me.tylerbwong.truss.utils.isPrimitive
 import me.tylerbwong.truss.utils.writeTo
 
-class BridgeViewVisitor(
+internal class BridgeViewVisitor(
     private val codeGenerator: CodeGenerator,
     private val logger: KSPLogger,
 ) : KSVisitorVoid() {

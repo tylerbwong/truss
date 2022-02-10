@@ -1,0 +1,13 @@
+// Signature format: 4.0
+package me.tylerbwong.truss.runtime {
+
+  @kotlin.annotation.MustBeDocumented @kotlin.annotation.Retention(kotlin.annotation.AnnotationRetention) @kotlin.annotation.Target(allowedTargets=kotlin.annotation.AnnotationTarget) public @interface BridgeComposable {
+    method public abstract boolean generateFunctionsAsParameters();
+    property public abstract boolean generateFunctionsAsParameters;
+  }
+
+  @kotlin.annotation.MustBeDocumented @kotlin.annotation.Retention(kotlin.annotation.AnnotationRetention) @kotlin.annotation.Target(allowedTargets=kotlin.annotation.AnnotationTarget) public @interface BridgeView {
+  }
+
+}
+
