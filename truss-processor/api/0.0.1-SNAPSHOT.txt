@@ -1,4 +1,13 @@
 // Signature format: 4.0
+package me.tylerbwong.truss.processor {
+
+  @com.google.auto.service.AutoService(SymbolProcessorProvider::class) public final class TrussProcessorProvider implements com.google.devtools.ksp.processing.SymbolProcessorProvider {
+    ctor public TrussProcessorProvider();
+    method public com.google.devtools.ksp.processing.SymbolProcessor create(com.google.devtools.ksp.processing.SymbolProcessorEnvironment environment);
+  }
+
+}
+
 package me.tylerbwong.truss.utils {
 
   public final class ClassNameKt {

@@ -18,7 +18,7 @@ import me.tylerbwong.truss.visitor.BridgeComposableVisitor
 import me.tylerbwong.truss.visitor.BridgeViewVisitor
 
 @AutoService(SymbolProcessorProvider::class)
-internal class TrussProcessorProvider : SymbolProcessorProvider {
+class TrussProcessorProvider : SymbolProcessorProvider {
     override fun create(environment: SymbolProcessorEnvironment): SymbolProcessor =
         TrussProcessor(environment)
 }
