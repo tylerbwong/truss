@@ -82,7 +82,7 @@ internal class BridgeComposableVisitor(
         fun addApplyBlockIfNecessary(): String {
             return if (paramSpecBuilders.isNotEmpty()) {
                 """
-                |.apply {
+                |apply {
                 |      ${
                     paramFunctionMap.keys.joinToString("\n      ") { function ->
                         "${function.simpleName.asString()}(" +
@@ -97,7 +97,7 @@ internal class BridgeComposableVisitor(
                 |    }
                 """.trimMargin()
             } else {
-                ".apply { viewConfig() }"
+                "apply { viewConfig() }"
             }
         }
 
@@ -120,10 +120,11 @@ internal class BridgeComposableVisitor(
             .addCode(
                 """
                 |%T(
-                |  factory = { context ->
-                |    $className(context)${addApplyBlockIfNecessary()}
-                |  },
+                |  factory = { context -> $className(context) },
                 |  modifier = modifier,
+                |  update = { view ->
+                |    view.${addApplyBlockIfNecessary()}
+                |  }
                 |)
                 """.trimMargin(),
                 androidViewClassName,
