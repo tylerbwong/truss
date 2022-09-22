@@ -8,13 +8,13 @@ plugins {
     id("com.vanniktech.maven.publish")
 }
 
-mavenPublish {
-    sonatypeHost = SonatypeHost.S01
-    releaseSigningEnabled = true
+mavenPublishing {
+    publishToMavenCentral(SonatypeHost.S01)
+    signAllPublications()
 }
 
 metalava {
-    filename = "api/${project.property("VERSION_NAME")}.txt"
+    filename.set("api/${project.property("VERSION_NAME")}.txt")
 }
 
 publishing {

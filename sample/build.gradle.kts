@@ -7,8 +7,8 @@ plugins {
 android {
     defaultConfig {
         applicationId = "me.tylerbwong.truss.sample"
-        compileSdk = 31
-        minSdk = 23
+        compileSdk = 32
+        minSdk = 26
     }
 
     buildFeatures {
@@ -17,7 +17,7 @@ android {
     }
 
     composeOptions {
-        kotlinCompilerExtensionVersion = libs.versions.compose.get()
+        kotlinCompilerExtensionVersion = libs.versions.androidx.compose.compiler.get()
     }
 
     compileOptions {
@@ -27,6 +27,12 @@ android {
 
     kotlinOptions {
         jvmTarget = JavaVersion.VERSION_11.toString()
+    }
+
+    androidComponents.onVariants {variant ->
+        kotlin.sourceSets.findByName(variant.name)?.kotlin?.srcDirs(
+            file("$buildDir/generated/ksp/${variant.name}/kotlin")
+        )
     }
 }
 
